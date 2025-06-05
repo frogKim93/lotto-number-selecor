@@ -1,0 +1,128 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.table-set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.table-set .tables {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.number-table {
+    border-collapse: collapse;
+    width: 33%;
+    margin: 10px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.number-table td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    background-color: #fdfdfd;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.number-table td.select {
+    background-color: cadetblue;
+    color: white;
+}
+
+.number-table td:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.number-table tr {
+    transition: background-color 0.2s;
+}
+
+.multi-select {
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    z-index: 1;
+}
+
+.summary {
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.number-balls {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    gap: 25px;
+}
+
+.number-ball {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    font-weight: bolder;
+    position: relative;
+}
+
+.number-ball.yellow {
+    background-color: yellow;
+    color: black;
+}
+
+.ball-count {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    color: #1A1A40;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.number-ball.blue {
+    background-color: blue;
+}
+
+.number-ball.red {
+    background-color: red;
+}
+
+.number-ball.black {
+    background-color: black;
+}
+
+.number-ball.green {
+    background-color: green;
+}
