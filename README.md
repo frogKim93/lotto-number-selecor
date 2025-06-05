@@ -28,7 +28,7 @@
 
 ## 🛠️ 기술 스택
 
-- **Frontend**: HTML, CSS, JavaScript (Vanilla 또는 React 사용 시 명시)
+- **Frontend**: React
 - **배포**: Firebase Hosting (`https://number-selector-64df4.web.app`)
 
 ---
