@@ -2,6 +2,8 @@ import React, {useRef} from 'react';
 import "./App.css";
 import {TableSet} from "./component/table/TableSet";
 import {Summary} from "./component/Summary";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { OneLineTableSet } from './component/table/OneLineTableSet';
 
 const DEFAULT_SET_COUNT = 10;
 
@@ -20,13 +22,22 @@ function App() {
 
     return (
         <div className="App">
-            {getTableSetNames().map(name => {
-                return (
-                    <TableSet key={name} title={name} columnCounts={[7, 9, 10]}
-                              refreshSummary={() => summaryRef.current!.refresh()}/>
-                )
-            })}
-            <Summary ref={summaryRef} tableNames={getTableSetNames()}/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/one-line" element={<OneLineTableSet/>}/>
+                    <Route path="/*" element={
+                        <>
+                            {getTableSetNames().map(name => {
+                                return (
+                                    <TableSet key={name} title={name} columnCounts={[7, 9, 10]}
+                                              refreshSummary={() => summaryRef.current!.refresh()}/>
+                                )
+                            })}
+                            <Summary ref={summaryRef} tableNames={getTableSetNames()}/>
+                        </>
+                    }/>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
