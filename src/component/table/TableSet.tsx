@@ -9,6 +9,8 @@ interface Props {
 
 export const TableSet = (props: Props) => {
     const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
+    const [memo, setMemo] = useState<string>(localStorage.getItem(`${props.title}-memo`) || "");
+    const [isEditingMemo, setEditingMemo] = useState<boolean>(false);
 
     useEffect(() => {
         const savedData = localStorage.getItem(props.title);
@@ -28,6 +30,12 @@ export const TableSet = (props: Props) => {
 
         setSelectedNumbers(numbers);
     }, []);
+
+    useEffect(() => {
+        if (!isEditingMemo && memo) {
+            localStorage.setItem(`${props.title}-memo`, memo);
+        }
+    }, [isEditingMemo]);
 
     const updateNumber = (value: number, isAdd: boolean) => {
         const updatedNumbers: number[] = [];
@@ -57,12 +65,22 @@ export const TableSet = (props: Props) => {
 
         setSelectedNumbers(newNumbers);
         localStorage.removeItem(props.title);
+        localStorage.removeItem(`${props.title}-memo`);
+        setMemo("");
         props.refreshSummary();
     }
 
     return (
         <div className="table-set">
-            <span>{props.title}</span>
+            <div className="table-title">
+                <span>{props.title}</span>
+                <div className="table-memo">
+                    {memo && !isEditingMemo && <span>[{memo}]</span>}
+                    {isEditingMemo &&
+                        <input type="text" defaultValue={memo} onChange={e => setMemo(e.currentTarget.value)}/>}
+                    <button onClick={() => setEditingMemo(!isEditingMemo)}>{memo === "" ? '메모 등록' : '메모 수정'}</button>
+                </div>
+            </div>
             <div className="tables">
                 {props.columnCounts.map(count => {
                     return (

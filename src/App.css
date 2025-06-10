@@ -11,6 +11,17 @@ html, body {
     margin-bottom: 15px;
 }
 
+.table-set .table-title {
+    display: flex;
+    gap: 10px;
+}
+
+.table-set .table-title .table-memo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .table-set .tables {
     display: flex;
     gap: 15px;
